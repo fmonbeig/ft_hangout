@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Tutorial</string>
+    <string name="app_name">Phone Book</string>
     <string name="my_string">Horse</string>
     <string name="Customer_name">Customer Name</string>
     <string name="Customer_Age">Customer Age</string>
