@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Tutorial</string>
+    <string name="my_string">Horse</string>
+    <string name="Customer_name">Customer Name</string>
+    <string name="Customer_Age">Customer Age</string>
+    <string name="Active_Customer">Active Customer</string>
+</resources>
