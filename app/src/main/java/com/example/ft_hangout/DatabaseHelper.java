@@ -83,7 +83,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public List<CustomerModel> getEveryOne() {
         List<CustomerModel> returnList = new ArrayList<>();
-
         //get data from database
 
         String queryString = "Select * FROM CUSTOMER_TABLE";
@@ -98,7 +97,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int customerID = cursor.getInt(0);
                 String customerName = cursor.getString(1);
                 int customerAge = cursor.getInt(2);
-                boolean customerActive = cursor.getInt(3) == 1 ? true : false; // Sql don't know what a boolean is so we have to translate it we a clever ternary operatio
+                boolean customerActive = cursor.getInt(3) == 1 ? true : false; // Sql don't know what a boolean is so we have to translate it we a clever ternary operation
 
                 CustomerModel newCustomer = new CustomerModel(customerID, customerName, customerAge, customerActive);
                 returnList.add(newCustomer);

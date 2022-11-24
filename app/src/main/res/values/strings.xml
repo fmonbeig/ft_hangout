@@ -4,4 +4,11 @@
     <string name="Customer_name">Customer Name</string>
     <string name="Customer_Age">Customer Age</string>
     <string name="Active_Customer">Active Customer</string>
+    <string name="First_Name">First Name</string>
+    <string name="NEW_CONTACT">NEW CONTACT</string>
+    <string name="Name">Name</string>
+    <string name="Phone">Phone</string>
+    <string name="Address">Address</string>
+    <string name="Other_Information">Other Information</string>
+    <string name="Create">Create</string>
 </resources>

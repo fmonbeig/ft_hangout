@@ -81,7 +81,7 @@ public class DbHelper  extends SQLiteOpenHelper {
         List<Contact> returnList = new ArrayList<>();
 
         //get data from database
-        String queryString = "Select * FROM CUSTOMER_TABLE";
+        String queryString = "Select * FROM CONTACT_TABLE";
         SQLiteDatabase db = this.getReadableDatabase();
         //Cursor is the result of the query with row and columns
         Cursor cursor = db.rawQuery(queryString, null);
@@ -91,10 +91,10 @@ public class DbHelper  extends SQLiteOpenHelper {
             do {
                 int contactID = cursor.getInt(0);
                 String contactFirstName = cursor.getString(1);
-                String contactName = cursor.getString(1);
-                int contactPhone = cursor.getInt(2);
-                String contactAddress = cursor.getString(1);
-                String contactOtherInformation = cursor.getString(1);
+                String contactName = cursor.getString(2);
+                int contactPhone = cursor.getInt(3);
+                String contactAddress = cursor.getString(4);
+                String contactOtherInformation = cursor.getString(5);
                 Contact newContact = new Contact(contactID, contactFirstName, contactName,
                                                 contactPhone, contactAddress, contactOtherInformation);
                 returnList.add(newContact);

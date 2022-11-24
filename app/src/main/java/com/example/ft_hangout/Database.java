@@ -12,8 +12,6 @@ import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import java.util.List;
-
 // Il faut creer la database ainsi que la classe qui aura un constructeur et des variables semblable a la db
 
 public class Database extends AppCompatActivity {
@@ -35,10 +33,10 @@ public class Database extends AppCompatActivity {
 
         // R is the resource folder
         // We catch all the element of the layout here when we create an activity
-        btn_add = findViewById(R.id.btn_add);
+        btn_add = findViewById(R.id.btn_create);
         btn_view = findViewById(R.id.btn_view);
         et_age = findViewById(R.id.et_age);
-        et_name = findViewById(R.id.et_name);
+        et_name = findViewById(R.id.et_first_name);
         sw_active = findViewById(R.id.sw_active);
         lv_customerView = findViewById(R.id.lv_customerView);
         databaseHelper = new DatabaseHelper(Database.this);
@@ -74,7 +72,6 @@ public class Database extends AppCompatActivity {
             }
         });
 
-        // Pour faire ca j'ai mis entre ( new OnItem puis j'ai cliqué sur la fenêtre)
         lv_customerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -84,7 +81,6 @@ public class Database extends AppCompatActivity {
                 Toast.makeText(Database.this,"Delete " + customerClick.toString(), Toast.LENGTH_SHORT).show();
             }
         });
-
 
     }
     public void showCustomerList(){
