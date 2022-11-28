@@ -1,6 +1,8 @@
 package com.example.ft_hangout;
 
-public class Contact {
+import java.io.Serializable;
+
+public class Contact implements Serializable {
     private int     id;
     private String  firstName;
     private String  name;

@@ -21,7 +21,6 @@ public class Color extends AppCompatActivity {
 
     public void ChangeInBlue(View v)
     {
-//        Log.d("succes", "Test");
         ActionBar aBar;
         aBar= getSupportActionBar();
         ColorDrawable cd = new ColorDrawable(android.graphics.Color.parseColor("#0475A1"));

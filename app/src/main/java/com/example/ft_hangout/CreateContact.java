@@ -21,7 +21,7 @@ public class CreateContact extends AppCompatActivity {
 
         btn_create = findViewById(R.id.btn_create);
         et_first_name = findViewById(R.id.et_first_name);
-        et_first_name = findViewById(R.id.et_name);
+        et_name = findViewById(R.id.et_name);
         et_phone = findViewById(R.id.et_phone);
         et_address = findViewById(R.id.et_address);
         et_other_information = findViewById(R.id.et_other_information);
@@ -33,12 +33,9 @@ public class CreateContact extends AppCompatActivity {
 
                 Contact newContact;
                 try {
-//                    newContact = new Contact(-1, et_first_name.getText().toString(), et_name.getText().toString(),
-//                            Integer.parseInt(et_phone.getText().toString()), et_address.getText().toString(),
-//                            et_other_information.getText().toString());
-                    newContact = new Contact(-1, "Florian", "MONBEIG",
-                            50, "rue de la lune",
-                            "fromage");
+                    newContact = new Contact(-1, et_first_name.getText().toString(), et_name.getText().toString(),
+                            Integer.parseInt(et_phone.getText().toString()), et_address.getText().toString(),
+                            et_other_information.getText().toString());
                 } catch(Exception e)
                 {
                     Toast.makeText(CreateContact.this, "error creating contact"  , Toast.LENGTH_SHORT).show();

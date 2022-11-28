@@ -11,4 +11,6 @@
     <string name="Address">Address</string>
     <string name="Other_Information">Other Information</string>
     <string name="Create">Create</string>
+    <string name="Delete">Delete</string>
+    <string name="Modify">Modify</string>
 </resources>

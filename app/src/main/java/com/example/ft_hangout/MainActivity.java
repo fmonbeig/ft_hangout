@@ -8,9 +8,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    //**************************//
+    //     LAYOUT VARIABLES     //
+    //**************************//
 
     Button          btn_language;
     Button          btn_create;
@@ -18,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
     ListView        lv_contact;
     DbHelper        databaseHelper;
     ArrayAdapter    contactArrayAdapter;
+
+    //**************************//
+    //     LIFE CYCLE           //
+    //**************************//
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,17 +47,26 @@ public class MainActivity extends AppCompatActivity {
         lv_contact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent contactCardActivity = new Intent(MainActivity.this, ContactCard.class);
+                Contact contactClick = (Contact) adapterView.getItemAtPosition(i);
 
+                contactCardActivity.putExtra("contactInfo", contactClick); // On passe une string dans l'Itent mais on peut aussi passer une collection
+                startActivity(contactCardActivity);
             }
         });
     }
 
-    public void showContactList(){
-        contactArrayAdapter = new ArrayAdapter<Contact>(MainActivity.this,
-                android.R.layout.simple_list_item_1, databaseHelper.getEveryOne());
-        lv_contact.setAdapter(contactArrayAdapter);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        showContactList();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+    }
     //**************************//
     //     ACTIVITY LAUNCHER    //
     //**************************//
@@ -66,5 +85,62 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, CreateContact.class );
         startActivity(i);
     }
+
+    //**************************//
+    //     OTHER METHODS        //
+    //**************************//
+
+    public void showContactList(){
+        contactArrayAdapter = new ArrayAdapter<Contact>(MainActivity.this,
+                android.R.layout.simple_list_item_1, databaseHelper.getEveryOne());
+        lv_contact.setAdapter(contactArrayAdapter);
+    }
 }
 
+
+/* A FAIRE
+*  Interdiction de mettre des errors dans la DB
+*  Gestion de la couleur
+*  Gestion de la langue (regarder vers un gestionnaire de preference)
+*  Gérer le layout horizontale
+*  Gérer le fait de pouvoir envoyer un texto
+*  Le toast de l'heure
+* */
+
+/*                    LIFE CYCLE
+    When you open the app it will go through below states: onCreate() –> onStart() –> onResume()
+
+        When you press the back button and exit the app
+
+        onPaused() — > onStop() –> onDestory()
+
+        When you press the home button
+
+        onPaused() –> onStop()
+
+        After pressing the home button, again when you open the app from a recent task list
+
+        onRestart() –> onStart() –> onResume()
+
+        After dismissing the dialog or back button from the dialog
+
+        onResume()
+
+        If a phone is ringing and user is using the app
+
+        onPause() –> onResume()
+
+        After the call ends
+
+        onResume()
+
+        When your phone screen is off
+
+        onPaused() –> onStop()
+
+        When your phone screen is turned back on
+
+        onRestart() –> onStart() –> onResume()
+
+        Happy Coding...@Ambilpura
+*/
