@@ -3,27 +3,28 @@ package com.example.ft_hangout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     //**************************//
-    //     LAYOUT VARIABLES     //
+    //     LAYOUT AND VARIABLES //
     //**************************//
 
-    Button          btn_language;
-    Button          btn_create;
-    Button          btn_color;
-    ListView        lv_contact;
-    DbHelper        databaseHelper;
-    ArrayAdapter    contactArrayAdapter;
+    Button              btn_language;
+    Button              btn_create;
+    Button              btn_color;
+    ListView            lv_contact;
+    DbHelper            databaseHelper;
+    PreferenceHelper    preferenceHelper;
+    ArrayAdapter        contactArrayAdapter;
+
 
     //**************************//
     //     LIFE CYCLE           //
@@ -39,11 +40,11 @@ public class MainActivity extends AppCompatActivity {
         btn_create = findViewById(R.id.btn_create);
         btn_color = findViewById(R.id.btn_color);
         lv_contact = findViewById(R.id.lv_contact);
+        preferenceHelper = new PreferenceHelper();
         databaseHelper = new DbHelper(MainActivity.this);
         showContactList();
 
         //On click listener for every element
-
         lv_contact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -63,9 +64,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onStart() {
+        super.onStart();
+        preferenceHelper.dateDisplay(this);
+    }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        preferenceHelper.dateSave(this);
     }
     //**************************//
     //     ACTIVITY LAUNCHER    //
@@ -104,7 +111,8 @@ public class MainActivity extends AppCompatActivity {
 *  Gestion de la langue (regarder vers un gestionnaire de preference)
 *  Gérer le layout horizontale
 *  Gérer le fait de pouvoir envoyer un texto
-*  Le toast de l'heure
+*  Le toast de l'heure (faire par le shared preference et non par une Classe) // A moitié OK
+*  Gérer le modify
 * */
 
 /*                    LIFE CYCLE
@@ -112,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
         When you press the back button and exit the app
 
-        onPaused() — > onStop() –> onDestory()
+        onPaused() — > onStop() –> onDestroy()
 
         When you press the home button
 

@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ContactCard extends AppCompatActivity {
 
@@ -21,6 +20,7 @@ public class ContactCard extends AppCompatActivity {
     Button btn_text;
     Contact contact;
     DbHelper        databaseHelper;
+    PreferenceHelper dot;
 
     @SuppressLint("SetTextI18n")
     @Override

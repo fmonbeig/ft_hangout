@@ -26,6 +26,7 @@ public class CreateContact extends AppCompatActivity {
         et_address = findViewById(R.id.et_address);
         et_other_information = findViewById(R.id.et_other_information);
         databaseHelper = new DbHelper(CreateContact.this);
+        PreferenceHelper dot;
 
         btn_create.setOnClickListener(new View.OnClickListener() {
             @Override

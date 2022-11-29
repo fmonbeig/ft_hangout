@@ -13,4 +13,5 @@
     <string name="Create">Create</string>
     <string name="Delete">Delete</string>
     <string name="Modify">Modify</string>
+    <string name="preference">Shared_Preferences</string>
 </resources>
