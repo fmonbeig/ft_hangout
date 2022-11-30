@@ -20,6 +20,7 @@ public class ContactCard extends AppCompatActivity {
     Button btn_text;
     Contact contact;
     DbHelper        databaseHelper;
+    PreferenceHelper    preferenceHelper;
     PreferenceHelper dot;
 
     @SuppressLint("SetTextI18n")
@@ -37,6 +38,7 @@ public class ContactCard extends AppCompatActivity {
         btn_modify = findViewById(R.id.btn_modify);
         btn_text = findViewById(R.id.btn_text);
         databaseHelper = new DbHelper(ContactCard.this);
+        preferenceHelper = new PreferenceHelper();
 
         /* Retrieve and display contact information's*/
         Intent i = getIntent();
@@ -55,6 +57,11 @@ public class ContactCard extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
+    }
+    
+    @Override
+    protected void onResume() {
+        super.onResume();
+        preferenceHelper.setColor(this, getSupportActionBar());
     }
 }

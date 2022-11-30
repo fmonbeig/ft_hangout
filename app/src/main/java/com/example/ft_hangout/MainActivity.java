@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     Button              btn_color;
     ListView            lv_contact;
     DbHelper            databaseHelper;
+    PreferenceHelper    preferenceHelper;
     ArrayAdapter        contactArrayAdapter;
 
 
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         btn_color = findViewById(R.id.btn_color);
         lv_contact = findViewById(R.id.lv_contact);
         databaseHelper = new DbHelper(MainActivity.this);
+        preferenceHelper = new PreferenceHelper();
         showContactList();
 
         //On click listener for every element
@@ -58,18 +60,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        preferenceHelper.setColor(this, getSupportActionBar());
         showContactList();
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
     //**************************//
     //     ACTIVITY LAUNCHER    //
     //**************************//
@@ -103,12 +97,11 @@ public class MainActivity extends AppCompatActivity {
 
 /* A FAIRE
 *  Interdiction de mettre des errors dans la DB
-*  Gestion de la couleur
 *  Gestion de la langue (regarder vers un gestionnaire de preference)
 *  Gérer le layout horizontale
 *  Gérer le fait de pouvoir envoyer un texto
-*  Le toast de l'heure (faire par le shared preference et non par une Classe) // A moitié OK
 *  Gérer le modify
+*  Front end un peu plus stylé
 * */
 
 /*                    LIFE CYCLE

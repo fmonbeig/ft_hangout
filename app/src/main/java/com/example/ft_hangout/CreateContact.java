@@ -12,6 +12,7 @@ public class CreateContact extends AppCompatActivity {
 
     Button      btn_create;
     DbHelper    databaseHelper;
+    PreferenceHelper preferenceHelper;
     EditText    et_first_name, et_name, et_phone, et_address, et_other_information;
 
     @Override
@@ -26,7 +27,7 @@ public class CreateContact extends AppCompatActivity {
         et_address = findViewById(R.id.et_address);
         et_other_information = findViewById(R.id.et_other_information);
         databaseHelper = new DbHelper(CreateContact.this);
-        PreferenceHelper dot;
+        preferenceHelper = new PreferenceHelper();
 
         btn_create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +50,9 @@ public class CreateContact extends AppCompatActivity {
         });
     }
 
-
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        preferenceHelper.setColor(this, getSupportActionBar());
+    }
 }

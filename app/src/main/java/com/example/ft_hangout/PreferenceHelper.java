@@ -3,16 +3,18 @@ package com.example.ft_hangout;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-
 public class PreferenceHelper {
-
     public static final String PREFERENCE = "APP_PREFERENCES";
     Date date;
     SimpleDateFormat formatter;
@@ -97,6 +99,19 @@ public class PreferenceHelper {
         date = new Date();
         String datePref = formatter.format(date);
         put(context, "date", datePref);
+    }
+
+    public void newColor(Context context, String color){
+        put(context, "color", color);
+    }
+
+    public void setColor(Context context, ActionBar aBar) {
+        if (contains(context, "color")) {
+            String color = get(context, "color", "").toString();
+            Log.d("color", color);
+            ColorDrawable cd = new ColorDrawable(android.graphics.Color.parseColor(color));
+            aBar.setBackgroundDrawable(cd);
+        }
     }
 }
 

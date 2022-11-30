@@ -1,9 +1,7 @@
 package com.example.ft_hangout;
 
-
 import android.app.Application;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.DefaultLifecycleObserver;
@@ -12,8 +10,8 @@ import androidx.lifecycle.ProcessLifecycleOwner;
 
 public class LifecycleApplication extends Application
         implements DefaultLifecycleObserver {
-
     PreferenceHelper    preferenceHelper;
+
     @Override
     public void onCreate() {
         super.onCreate();

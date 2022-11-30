@@ -31,7 +31,6 @@ public class DbHelper  extends SQLiteOpenHelper {
         String createTableStatement = "CREATE TABLE " + CONTACT_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_FIRST_NAME + " TEXT, " + COLUMN_NAME + " TEXT, " + COLUMN_PHONE + " INT, " + COLUMN_ADDRESS + " TEXT, " + COLUMN_OTHER_INFORMATION + " TEXT)";
         sqLiteDatabase.execSQL(createTableStatement);
-
     }
 
     @Override
