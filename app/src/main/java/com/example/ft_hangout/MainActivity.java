@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     Button              btn_color;
     ListView            lv_contact;
     DbHelper            databaseHelper;
-    PreferenceHelper    preferenceHelper;
     ArrayAdapter        contactArrayAdapter;
 
 
@@ -40,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         btn_create = findViewById(R.id.btn_create);
         btn_color = findViewById(R.id.btn_color);
         lv_contact = findViewById(R.id.lv_contact);
-        preferenceHelper = new PreferenceHelper();
         databaseHelper = new DbHelper(MainActivity.this);
         showContactList();
 
@@ -66,13 +64,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        preferenceHelper.dateDisplay(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        preferenceHelper.dateSave(this);
     }
     //**************************//
     //     ACTIVITY LAUNCHER    //
