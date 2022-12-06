@@ -1,15 +1,18 @@
 package com.example.ft_hangout;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.view.Menu;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,9 +20,7 @@ public class MainActivity extends AppCompatActivity {
     //     LAYOUT AND VARIABLES //
     //**************************//
 
-    Button              btn_language;
     Button              btn_create;
-    Button              btn_color;
     ListView            lv_contact;
     DbHelper            databaseHelper;
     PreferenceHelper    preferenceHelper;
@@ -36,9 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // reference to all the button and Layout
-        btn_language = findViewById(R.id.btn_language);
         btn_create = findViewById(R.id.btn_create);
-        btn_color = findViewById(R.id.btn_color);
         lv_contact = findViewById(R.id.lv_contact);
         databaseHelper = new DbHelper(MainActivity.this);
         preferenceHelper = new PreferenceHelper();
@@ -64,19 +63,26 @@ public class MainActivity extends AppCompatActivity {
         showContactList();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.color:
+                Intent i = new Intent(this, Color.class );
+                startActivity(i);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     //**************************//
     //     ACTIVITY LAUNCHER    //
     //**************************//
-
-    public void launchColor(View v) {
-        Intent i = new Intent(this, Color.class);
-        startActivity(i);
-    }
-
-    public void launchDatabase(View v){
-        Intent i = new Intent(this, Database.class );
-        startActivity(i);
-    }
 
     public void launchCreateContact(View v){
         Intent i = new Intent(this, CreateContact.class );
@@ -96,11 +102,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 /* A FAIRE
-*  Interdiction de mettre des errors dans la DB
-*  Gestion de la langue (regarder vers un gestionnaire de preference)
+*  Tester sur un smartphone et changer la langue en par default puis en fr
 *  Gérer le layout horizontale
 *  Gérer le fait de pouvoir envoyer un texto
-*  Gérer le modify
 *  Front end un peu plus stylé
 * */
 
@@ -140,4 +144,15 @@ public class MainActivity extends AppCompatActivity {
         onRestart() –> onStart() –> onResume()
 
         Happy Coding...@Ambilpura
+
+
+        Select next occurrence: Alt + J (Ctrl + G for Mac OS X)
+
+        Unselect next occurrence: Shift + Alt + J (Shift + Ctrl + G for Mac OS X)
+
+        Select all occurrences: Shift + Ctrl + Alt + J (Ctrl + Cmd + G for Mac OS X)
+
+        Remove all selections: Esc
+
+        Add/remove a selection: Alt + Shift + Mouse Click
 */

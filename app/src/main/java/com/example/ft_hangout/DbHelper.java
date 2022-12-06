@@ -58,6 +58,28 @@ public class DbHelper  extends SQLiteOpenHelper {
         }
     }
 
+    public boolean modify(Contact contact){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues(); // like hashmap with key values
+        String where = COLUMN_ID + "=" + contact.getId();
+
+        // We don't put ID because it's autoincrement
+        cv.put(COLUMN_FIRST_NAME, contact.getFirstName());
+        cv.put(COLUMN_NAME, contact.getName());
+        cv.put(COLUMN_PHONE, contact.getPhone());
+        cv.put(COLUMN_ADDRESS, contact.getAddress());
+        cv.put(COLUMN_OTHER_INFORMATION, contact.getOtherInformation());
+
+        long insert = db.update(CONTACT_TABLE, cv,COLUMN_ID + "=?",
+                new String[] {Integer.toString(contact.getId())} );
+        db.close();
+        if (insert < 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public boolean deleteOne(Contact contact){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM " + CONTACT_TABLE + " WHERE " + COLUMN_ID + " = " + contact.getId();

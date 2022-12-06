@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="First_Name">Prénom</string>
+    <string name="Name">Nom</string>
+    <string name="Phone">Téléphone</string>
+    <string name="NEW_CONTACT">NOUVEAU CONTACT</string>
+    <string name="Address">Adresse</string>
+    <string name="Other_Information">Autre informations</string>
+    <string name="Create">Créer</string>
+    <string name="Delete">Supprimer</string>
+    <string name="Modify">Modifier</string>
+    <string name="Language">Langage</string>
+    <string name="Color">Couleur</string>
+</resources>

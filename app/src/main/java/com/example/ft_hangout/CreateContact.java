@@ -32,20 +32,19 @@ public class CreateContact extends AppCompatActivity {
         btn_create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Contact newContact;
                 try {
                     newContact = new Contact(-1, et_first_name.getText().toString(), et_name.getText().toString(),
                             Integer.parseInt(et_phone.getText().toString()), et_address.getText().toString(),
                             et_other_information.getText().toString());
+                    boolean success = databaseHelper.addOne(newContact);
+                    if (!success) {
+                        Toast.makeText(CreateContact.this, "database error, try again"  , Toast.LENGTH_SHORT).show();
+                    }
                 } catch(Exception e)
                 {
                     Toast.makeText(CreateContact.this, "error creating contact"  , Toast.LENGTH_SHORT).show();
-                    newContact = new Contact(-1,"error","error", 0, "error", "error"  );
                 }
-                boolean success = databaseHelper.addOne(newContact);
-//                Toast.makeText(CreateContact.this, "Success= " + success, Toast.LENGTH_SHORT).show();
-                Toast.makeText(CreateContact.this, newContact.toString()  , Toast.LENGTH_SHORT).show();
             }
         });
     }

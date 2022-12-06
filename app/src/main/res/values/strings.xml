@@ -1,17 +1,21 @@
 <resources>
-    <string name="app_name">Phone Book</string>
-    <string name="my_string">Horse</string>
-    <string name="Customer_name">Customer Name</string>
-    <string name="Customer_Age">Customer Age</string>
-    <string name="Active_Customer">Active Customer</string>
+    <string name="app_name" translatable="false">Phone Book</string>
+    <string name="my_string" translatable="false">Horse</string>
+    <string name="Customer_name" translatable="false">Customer Name</string>
+    <string name="Customer_Age" translatable="false">Customer Age</string>
+    <string name="Active_Customer" translatable="false">Active Customer</string>
     <string name="First_Name">First Name</string>
     <string name="NEW_CONTACT">NEW CONTACT</string>
     <string name="Name">Name</string>
     <string name="Phone">Phone</string>
     <string name="Address">Address</string>
-    <string name="Other_Information">Other Information</string>
+    <string name="Other_Information">Other Informations</string>
     <string name="Create">Create</string>
     <string name="Delete">Delete</string>
     <string name="Modify">Modify</string>
-    <string name="preference">Shared_Preferences</string>
+    <string name="Preference" translatable="false">Shared_Preferences</string>
+    <string name="Color">Color</string>
+    <string name="Language">Language</string>
+    <string name="ok">ok</string>
+    <string name="Aa">Aa</string>
 </resources>

@@ -11,17 +11,16 @@ import android.widget.TextView;
 
 public class ContactCard extends AppCompatActivity {
 
-    TextView tv_name;
-    TextView tv_address;
-    TextView tv_phone;
-    TextView tv_other_information;
-    Button btn_delete;
-    Button btn_modify;
-    Button btn_text;
-    Contact contact;
-    DbHelper        databaseHelper;
+    TextView            tv_name;
+    TextView            tv_address;
+    TextView            tv_phone;
+    TextView            tv_other_information;
+    Button              btn_delete;
+    Button              btn_modify;
+    Button              btn_text;
+    Contact             contact;
+    DbHelper            databaseHelper;
     PreferenceHelper    preferenceHelper;
-    PreferenceHelper dot;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -57,8 +56,26 @@ public class ContactCard extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        btn_modify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent modifyContact = new Intent(ContactCard.this, ModifyContact.class);
+                modifyContact.putExtra("contactInfo", contact);
+                startActivity(modifyContact);
+            }
+        });
+
+        btn_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sendSMS = new Intent(ContactCard.this, SendSMS.class);
+                sendSMS.putExtra("contactInfo", contact);
+                startActivity(sendSMS);
+            }
+        });
     }
-    
+
     @Override
     protected void onResume() {
         super.onResume();

@@ -114,19 +114,3 @@ public class PreferenceHelper {
         }
     }
 }
-
-//    Date d1 = sdf.parse(start_date);
-//    Date d2 = sdf.parse(end_date);
-//
-//    // Calculate time difference
-//    // in milliseconds
-//    long difference_In_Time
-//            = d2.getTime() - d1.getTime();
-//
-//    // Calculate time difference in
-//    // seconds, minutes, hours, years,
-//    // and days
-//    long difference_In_Seconds
-//            = (difference_In_Time
-//            / 1000)
-//            % 60;
