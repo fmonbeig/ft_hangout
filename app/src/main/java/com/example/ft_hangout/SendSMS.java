@@ -65,14 +65,23 @@ public class SendSMS extends AppCompatActivity {
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String messageAppend;
                 String smsMessage = et_message_content.getText().toString();
-                String phoneNumber = String.format("smsto:%s", Integer.toString(contact.getPhone()));
-                checkForSmsPermission();
-                Toast.makeText(SendSMS.this, phoneNumber, Toast.LENGTH_SHORT).show();
-                smsManager.sendTextMessage(phoneNumber,
-                        null,
-                        smsMessage,
-                        null, null);
+                if (!smsMessage.isEmpty()) {
+                    Log.d("sms", smsMessage);
+                    String phoneNumber = String.format("smsto:%s", Integer.toString(contact.getPhone()));
+                    checkForSmsPermission();
+                    Toast.makeText(SendSMS.this, phoneNumber, Toast.LENGTH_SHORT).show();
+                    smsManager.sendTextMessage(phoneNumber,
+                            null,
+                            smsMessage,
+                            null, null);
+                    messageAppend = contact.getMessage();
+                    messageAppend += smsMessage + "\n";
+                    contact.setMessage(messageAppend);
+                    databaseHelper.modifyMessageContent(contact);
+                    showMessage();
+                }
             }
         });
     }
@@ -115,8 +124,9 @@ public class SendSMS extends AppCompatActivity {
     }
 
     public void showMessage(){
+        Contact user = databaseHelper.getOneContactById(contact.getId());
         contactArrayAdapter = new ArrayAdapter<String>(SendSMS.this,
-                android.R.layout.select_dialog_item, contact.getEveryMessage());
+                android.R.layout.select_dialog_item, user.getEveryMessage());
         lv_sms_historical.setAdapter(contactArrayAdapter);
     }
 }

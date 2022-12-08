@@ -15,6 +15,8 @@ public class MyReceiver extends BroadcastReceiver {
     @SuppressLint("NewApi")
     public void onReceive(Context context, Intent intent) {
         // Get the SMS message.
+        Log.d("SMS", "onReceiveRRRR: ");
+        Toast.makeText(context, "onReceiveRRRR: ", Toast.LENGTH_LONG).show();
         Bundle bundle = intent.getExtras();
         SmsMessage[] msgs;
         String strMessage = "";

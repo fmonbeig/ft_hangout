@@ -60,8 +60,7 @@ public class DbHelper  extends SQLiteOpenHelper {
         cv.put(COLUMN_PHONE, contact.getPhone());
         cv.put(COLUMN_ADDRESS, contact.getAddress());
         cv.put(COLUMN_OTHER_INFORMATION, contact.getOtherInformation());
-        cv.put(COLUMN_MESSAGE, "Bonjour");
-        Log.d("tag", "tesst");
+        cv.put(COLUMN_MESSAGE, "Bonjour\n");
         //writing inside the DB
         long insert = db.insert(CONTACT_TABLE, null, cv);
         db.close();
@@ -83,6 +82,29 @@ public class DbHelper  extends SQLiteOpenHelper {
         cv.put(COLUMN_PHONE, contact.getPhone());
         cv.put(COLUMN_ADDRESS, contact.getAddress());
         cv.put(COLUMN_OTHER_INFORMATION, contact.getOtherInformation());
+
+        long insert = db.update(CONTACT_TABLE, cv,COLUMN_ID + "=?",
+                new String[] {Integer.toString(contact.getId())} );
+        db.close();
+        if (insert < 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean modifyMessageContent(Contact contact){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues(); // like hashmap with key values
+        String where = COLUMN_ID + "=" + contact.getId();
+
+        // We don't put ID because it's autoincrement
+        cv.put(COLUMN_FIRST_NAME, contact.getFirstName());
+        cv.put(COLUMN_NAME, contact.getName());
+        cv.put(COLUMN_PHONE, contact.getPhone());
+        cv.put(COLUMN_ADDRESS, contact.getAddress());
+        cv.put(COLUMN_OTHER_INFORMATION, contact.getOtherInformation());
+        cv.put(COLUMN_MESSAGE, contact.getMessage());
 
         long insert = db.update(CONTACT_TABLE, cv,COLUMN_ID + "=?",
                 new String[] {Integer.toString(contact.getId())} );
@@ -141,6 +163,32 @@ public class DbHelper  extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return returnList;
+    }
+
+    public Contact getOneContactById(int id) {
+        Contact contact;
+        List<Contact> returnList = getEveryOne();
+        for (int i = 0;  i < returnList.size(); i++)
+        {
+            contact = returnList.get(i);
+            if (contact.getId() == id) {
+                return contact;
+            }
+        }
+        return null;
+    }
+
+    public Contact getOneContactByPhone(int phone) {
+        Contact contact;
+        List<Contact> returnList = getEveryOne();
+        for (int i = 0;  i < returnList.size(); i++)
+        {
+            contact = returnList.get(i);
+            if (contact.getPhone() == phone) {
+                return contact;
+            }
+        }
+        return null;
     }
 
     //**************************//
