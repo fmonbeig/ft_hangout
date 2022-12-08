@@ -51,7 +51,7 @@ public class ModifyContact extends AppCompatActivity {
                 try {
                     newContact = new Contact(contact.getId(), ed_first_name_modify.getText().toString(), ed_name_modify.getText().toString(),
                             Integer.parseInt(ed_phone_modify.getText().toString()), ed_address_modify.getText().toString(),
-                            ed_other_information_modify.getText().toString());
+                            ed_other_information_modify.getText().toString(),contact.getMessage());
                     boolean success = databaseHelper.modify(newContact);
                     if (!success) {
                         Toast.makeText(ModifyContact.this, "database error, try again", Toast.LENGTH_SHORT).show();

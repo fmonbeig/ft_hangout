@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -20,22 +22,33 @@ public class DbHelper  extends SQLiteOpenHelper {
     public static final String COLUMN_PHONE = "COLUMN_PHONE";
     public static final String COLUMN_ADDRESS = "COLUMN_ADDRESS";
     public static final String COLUMN_OTHER_INFORMATION = "COLUMN_OTHER_INFORMATION";
+    public static final String COLUMN_MESSAGE = "COLUMN_MESSAGE";
 
     public DbHelper(@Nullable Context context) {
-        super(context, "contact_db", null, 1);
+        super(context, "contact_db", null, 2);
     }
 
     // First write the query creating the table then refactor variable with constant
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String createTableStatement = "CREATE TABLE " + CONTACT_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_FIRST_NAME + " TEXT, " + COLUMN_NAME + " TEXT, " + COLUMN_PHONE + " INT, " + COLUMN_ADDRESS + " TEXT, " + COLUMN_OTHER_INFORMATION + " TEXT)";
+                COLUMN_FIRST_NAME + " TEXT, " + COLUMN_NAME + " TEXT, " + COLUMN_PHONE + " INT, " + COLUMN_ADDRESS + " TEXT, " + COLUMN_OTHER_INFORMATION + " TEXT"
+                + COLUMN_MESSAGE + "TEXT)";
         sqLiteDatabase.execSQL(createTableStatement);
     }
 
+    //Upgrade the db if a newer version exist, this is check at every launch
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // If you need to add a new column
+        if (newVersion > oldVersion) {
+            db.execSQL("ALTER TABLE CONTACT_TABLE ADD COLUMN COLUMN_MESSAGE STRING");
+        }
     }
+
+    //**************************//
+    //     CONTACT SECTION      //
+    //**************************//
 
     public boolean addOne(Contact contact) {
         SQLiteDatabase db = this.getWritableDatabase(); // creating a variable where we can write inside a DB
@@ -47,7 +60,8 @@ public class DbHelper  extends SQLiteOpenHelper {
         cv.put(COLUMN_PHONE, contact.getPhone());
         cv.put(COLUMN_ADDRESS, contact.getAddress());
         cv.put(COLUMN_OTHER_INFORMATION, contact.getOtherInformation());
-
+        cv.put(COLUMN_MESSAGE, "Bonjour");
+        Log.d("tag", "tesst");
         //writing inside the DB
         long insert = db.insert(CONTACT_TABLE, null, cv);
         db.close();
@@ -116,8 +130,10 @@ public class DbHelper  extends SQLiteOpenHelper {
                 int contactPhone = cursor.getInt(3);
                 String contactAddress = cursor.getString(4);
                 String contactOtherInformation = cursor.getString(5);
+                String contactMessage = cursor.getString(6);
                 Contact newContact = new Contact(contactID, contactFirstName, contactName,
-                                                contactPhone, contactAddress, contactOtherInformation);
+                                                contactPhone, contactAddress, contactOtherInformation,
+                                                contactMessage);
                 returnList.add(newContact);
             } while (cursor.moveToNext());
         }
@@ -126,5 +142,12 @@ public class DbHelper  extends SQLiteOpenHelper {
         db.close();
         return returnList;
     }
+
+    //**************************//
+    //     SMS SECTION          //
+    //**************************//
+
+
+
 
 }

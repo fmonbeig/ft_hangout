@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     PreferenceHelper    preferenceHelper;
     ArrayAdapter        contactArrayAdapter;
 
-
     //**************************//
     //     LIFE CYCLE           //
     //**************************//
@@ -41,7 +40,10 @@ public class MainActivity extends AppCompatActivity {
         lv_contact = findViewById(R.id.lv_contact);
         databaseHelper = new DbHelper(MainActivity.this);
         preferenceHelper = new PreferenceHelper();
-        showContactList();
+//        databaseHelper.close();
+//        MainActivity.this.deleteDatabase("CONTACT_TABLE");
+//        showContactList();
+
 
         //On click listener for every element
         lv_contact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -76,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.color:
                 Intent i = new Intent(this, Color.class );
                 startActivity(i);
+            case R.id.language:
+                Intent j = new Intent(android.provider.Settings.ACTION_APPLICATION_SETTINGS);
+                startActivity(j);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -93,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
     //     OTHER METHODS        //
     //**************************//
 
+    //launch the toString method for every Contact Object
     public void showContactList(){
         contactArrayAdapter = new ArrayAdapter<Contact>(MainActivity.this,
                 android.R.layout.simple_list_item_1, databaseHelper.getEveryOne());
@@ -100,12 +106,12 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-
 /* A FAIRE
 *  Tester sur un smartphone et changer la langue en par default puis en fr
 *  Gérer le layout horizontale
 *  Gérer le fait de pouvoir envoyer un texto
 *  Front end un peu plus stylé
+*  Faire passer en String le phone avec un check sur du full num car le 0 part quand c'est du int?
 * */
 
 /*                    LIFE CYCLE

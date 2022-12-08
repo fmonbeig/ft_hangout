@@ -1,6 +1,13 @@
 package com.example.ft_hangout;
 
+import android.util.Log;
+
+import org.intellij.lang.annotations.JdkConstants;
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Contact implements Serializable {
     private int     id;
@@ -9,17 +16,20 @@ public class Contact implements Serializable {
     private int     phone;
     private String  address;
     private String  otherInformation;
+    private String  message;
 
     public Contact() {
     }
 
-    public Contact(int id, String firstName, String name, int phone, String address, String otherInformation) {
+    public Contact(int id, String firstName, String name, int phone, String address,
+                   String otherInformation, String message) {
         this.id = id;
         this.firstName = firstName;
         this.name = name;
         this.phone = phone;
         this.address = address;
         this.otherInformation = otherInformation;
+        this.message = message;
     }
 
     public int getId() {
@@ -70,6 +80,14 @@ public class Contact implements Serializable {
         this.otherInformation = otherInformation;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     @Override
     public String toString() {
         return "Contact{" +
@@ -81,4 +99,12 @@ public class Contact implements Serializable {
                 ", otherInformation='" + otherInformation + '\'' +
                 '}';
     }
+
+    public List<String> getEveryMessage() {
+        List<String> everyMessage;
+        everyMessage = new ArrayList<String>(Arrays.asList(message.split(" \n ")));
+        Log.d("message", everyMessage.toString());
+        return everyMessage;
+    }
+    //a chaque debut de message je mettrais un identifiant qui permettra de caractériser le user
 }

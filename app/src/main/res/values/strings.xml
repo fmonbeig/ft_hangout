@@ -18,4 +18,5 @@
     <string name="Language">Language</string>
     <string name="ok">ok</string>
     <string name="Aa">Aa</string>
+    <string name="failure_permission">Failure permission</string>
 </resources>

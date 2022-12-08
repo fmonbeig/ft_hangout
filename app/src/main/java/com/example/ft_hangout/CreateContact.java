@@ -2,6 +2,7 @@ package com.example.ft_hangout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,10 +37,15 @@ public class CreateContact extends AppCompatActivity {
                 try {
                     newContact = new Contact(-1, et_first_name.getText().toString(), et_name.getText().toString(),
                             Integer.parseInt(et_phone.getText().toString()), et_address.getText().toString(),
-                            et_other_information.getText().toString());
+                            et_other_information.getText().toString(), " ");
                     boolean success = databaseHelper.addOne(newContact);
                     if (!success) {
                         Toast.makeText(CreateContact.this, "database error, try again"  , Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Intent home = new Intent(CreateContact.this, MainActivity.class);
+                        startActivity(home);
+                        Toast.makeText(CreateContact.this, "Contact created", Toast.LENGTH_SHORT).show();
                     }
                 } catch(Exception e)
                 {
