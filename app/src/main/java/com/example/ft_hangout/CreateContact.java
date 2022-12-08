@@ -36,7 +36,7 @@ public class CreateContact extends AppCompatActivity {
                 Contact newContact;
                 try {
                     newContact = new Contact(-1, et_first_name.getText().toString(), et_name.getText().toString(),
-                            Integer.parseInt(et_phone.getText().toString()), et_address.getText().toString(),
+                            et_phone.getText().toString(), et_address.getText().toString(),
                             et_other_information.getText().toString(), " ");
                     boolean success = databaseHelper.addOne(newContact);
                     if (!success) {

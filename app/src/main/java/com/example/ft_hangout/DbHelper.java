@@ -25,14 +25,14 @@ public class DbHelper  extends SQLiteOpenHelper {
     public static final String COLUMN_MESSAGE = "COLUMN_MESSAGE";
 
     public DbHelper(@Nullable Context context) {
-        super(context, "contact_db", null, 2);
+        super(context, "contact_db", null, 6);
     }
 
     // First write the query creating the table then refactor variable with constant
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String createTableStatement = "CREATE TABLE " + CONTACT_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_FIRST_NAME + " TEXT, " + COLUMN_NAME + " TEXT, " + COLUMN_PHONE + " INT, " + COLUMN_ADDRESS + " TEXT, " + COLUMN_OTHER_INFORMATION + " TEXT"
+                COLUMN_FIRST_NAME + " TEXT, " + COLUMN_NAME + " TEXT, " + COLUMN_PHONE + " TEXT, " + COLUMN_ADDRESS + " TEXT, " + COLUMN_OTHER_INFORMATION + " TEXT"
                 + COLUMN_MESSAGE + "TEXT)";
         sqLiteDatabase.execSQL(createTableStatement);
     }
@@ -43,6 +43,7 @@ public class DbHelper  extends SQLiteOpenHelper {
         // If you need to add a new column
         if (newVersion > oldVersion) {
             db.execSQL("ALTER TABLE CONTACT_TABLE ADD COLUMN COLUMN_MESSAGE STRING");
+//            db.execSQL("DROP TABLE CONTACT_TABLE");
         }
     }
 
@@ -149,7 +150,7 @@ public class DbHelper  extends SQLiteOpenHelper {
                 int contactID = cursor.getInt(0);
                 String contactFirstName = cursor.getString(1);
                 String contactName = cursor.getString(2);
-                int contactPhone = cursor.getInt(3);
+                String contactPhone = cursor.getString(3);
                 String contactAddress = cursor.getString(4);
                 String contactOtherInformation = cursor.getString(5);
                 String contactMessage = cursor.getString(6);
@@ -178,13 +179,13 @@ public class DbHelper  extends SQLiteOpenHelper {
         return null;
     }
 
-    public Contact getOneContactByPhone(int phone) {
+    public Contact getOneContactByPhone(String phone) {
         Contact contact;
         List<Contact> returnList = getEveryOne();
         for (int i = 0;  i < returnList.size(); i++)
         {
             contact = returnList.get(i);
-            if (contact.getPhone() == phone) {
+            if (contact.getPhone().equals(phone)) {
                 return contact;
             }
         }

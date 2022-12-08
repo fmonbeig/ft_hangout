@@ -11,15 +11,20 @@ import android.util.Log;
 import android.widget.Toast;
 
 public class MyReceiver extends BroadcastReceiver {
+    DbHelper databaseHelper;
 
     @SuppressLint("NewApi")
     public void onReceive(Context context, Intent intent) {
+        databaseHelper = new DbHelper(context);
+        Contact contact;
+
         // Get the SMS message.
         Log.d("SMS", "onReceiveRRRR: ");
         Toast.makeText(context, "onReceiveRRRR: ", Toast.LENGTH_LONG).show();
         Bundle bundle = intent.getExtras();
         SmsMessage[] msgs;
         String strMessage = "";
+        String strPhone = "";
         String format = bundle.getString("format");
         // Retrieve the SMS message received.
         Object[] pdus = (Object[]) bundle.get("pdus");
@@ -37,12 +42,38 @@ public class MyReceiver extends BroadcastReceiver {
                     msgs[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
                 }
                 // Build the message to show.
-                strMessage += "SMS from " + msgs[i].getOriginatingAddress();
-                strMessage += " :" + msgs[i].getMessageBody() + "\n";
+                strPhone = msgs[i].getOriginatingAddress();
+                strMessage += msgs[i].getMessageBody() + "\n";
                 // Log and display the SMS message.
                 Log.d("SMS", "onReceive: " + strMessage);
                 Toast.makeText(context, strMessage, Toast.LENGTH_LONG).show();
             }
+            contact = contactFinder(strPhone);
+            appendMessage(strMessage, contact);
         }
+    }
+
+    public Contact contactFinder(String phone){
+        Contact contact = databaseHelper.getOneContactByPhone(phone);
+        if (contact == null) {
+            contactCreation(phone);
+            contact = databaseHelper.getOneContactByPhone(phone);
+        }
+        return contact;
+    }
+
+    public void contactCreation(String phone){
+        Contact contact = new Contact(-1, "", phone,
+                phone, "", "", "");
+        databaseHelper.addOne(contact);
+    }
+
+    public void appendMessage(String str, Contact contact) {
+        String messageAppend;
+
+        messageAppend = contact.getMessage();
+        messageAppend += str + "\n";
+        contact.setMessage(messageAppend);
+        databaseHelper.modifyMessageContent(contact);
     }
 }

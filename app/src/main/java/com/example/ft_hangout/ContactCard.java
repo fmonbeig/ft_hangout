@@ -44,7 +44,7 @@ public class ContactCard extends AppCompatActivity {
         contact = (Contact) i.getSerializableExtra("contactInfo");
         tv_name.setText(contact.getFirstName() + " " + contact.getName());
         tv_address.setText(contact.getAddress());
-        tv_phone.setText(Integer.toString(contact.getPhone()));
+        tv_phone.setText(contact.getPhone());
         tv_other_information.setText(contact.getOtherInformation());
 
         /* On Click Listener */

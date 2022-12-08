@@ -41,7 +41,7 @@ public class ModifyContact extends AppCompatActivity {
         ed_name_modify.setText(contact.getName());
         ed_first_name_modify.setText(contact.getFirstName());
         ed_address_modify.setText(contact.getAddress());
-        ed_phone_modify.setText(Integer.toString(contact.getPhone()));
+        ed_phone_modify.setText(contact.getPhone());
         ed_other_information_modify.setText(contact.getOtherInformation());
 
         ok.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +50,7 @@ public class ModifyContact extends AppCompatActivity {
                 Contact newContact;
                 try {
                     newContact = new Contact(contact.getId(), ed_first_name_modify.getText().toString(), ed_name_modify.getText().toString(),
-                            Integer.parseInt(ed_phone_modify.getText().toString()), ed_address_modify.getText().toString(),
+                            ed_phone_modify.getText().toString(), ed_address_modify.getText().toString(),
                             ed_other_information_modify.getText().toString(),contact.getMessage());
                     boolean success = databaseHelper.modify(newContact);
                     if (!success) {

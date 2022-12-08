@@ -13,7 +13,7 @@ public class Contact implements Serializable {
     private int     id;
     private String  firstName;
     private String  name;
-    private int     phone;
+    private String  phone;
     private String  address;
     private String  otherInformation;
     private String  message;
@@ -21,7 +21,7 @@ public class Contact implements Serializable {
     public Contact() {
     }
 
-    public Contact(int id, String firstName, String name, int phone, String address,
+    public Contact(int id, String firstName, String name, String phone, String address,
                    String otherInformation, String message) {
         this.id = id;
         this.firstName = firstName;
@@ -56,11 +56,11 @@ public class Contact implements Serializable {
         this.name = name;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

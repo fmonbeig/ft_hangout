@@ -69,7 +69,7 @@ public class SendSMS extends AppCompatActivity {
                 String smsMessage = et_message_content.getText().toString();
                 if (!smsMessage.isEmpty()) {
                     Log.d("sms", smsMessage);
-                    String phoneNumber = String.format("smsto:%s", Integer.toString(contact.getPhone()));
+                    String phoneNumber = String.format("smsto:%s", contact.getPhone());
                     checkForSmsPermission();
                     Toast.makeText(SendSMS.this, phoneNumber, Toast.LENGTH_SHORT).show();
                     smsManager.sendTextMessage(phoneNumber,

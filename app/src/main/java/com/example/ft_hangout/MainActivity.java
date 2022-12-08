@@ -40,9 +40,7 @@ public class MainActivity extends AppCompatActivity {
         lv_contact = findViewById(R.id.lv_contact);
         databaseHelper = new DbHelper(MainActivity.this);
         preferenceHelper = new PreferenceHelper();
-//        databaseHelper.close();
-//        MainActivity.this.deleteDatabase("CONTACT_TABLE");
-//        showContactList();
+        showContactList();
 
 
         //On click listener for every element
@@ -51,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent contactCardActivity = new Intent(MainActivity.this, ContactCard.class);
                 Contact contactClick = (Contact) adapterView.getItemAtPosition(i);
-
                 contactCardActivity.putExtra("contactInfo", contactClick); // On passe une string dans l'Itent mais on peut aussi passer une collection
                 startActivity(contactCardActivity);
             }
