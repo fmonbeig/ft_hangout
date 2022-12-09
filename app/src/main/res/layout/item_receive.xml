@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/msgr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_margin="5sp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/teal_200"
+        android:shadowColor="@color/ic_launcher_background"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:text="Medium Text"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+</LinearLayout>

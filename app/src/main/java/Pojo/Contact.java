@@ -1,4 +1,4 @@
-package com.example.ft_hangout;
+package Pojo;
 
 import android.util.Log;
 
@@ -102,8 +102,9 @@ public class Contact implements Serializable {
 
     public List<String> getEveryMessage() {
         List<String> everyMessage;
-        everyMessage = new ArrayList<String>(Arrays.asList(message.split(" \n ")));
+        everyMessage = new ArrayList<String>(Arrays.asList(message.split("\n")));
         Log.d("message", everyMessage.toString());
+        Log.d("size of ArrayList", Integer.toString(everyMessage.size()));
         return everyMessage;
     }
     //a chaque debut de message je mettrais un identifiant qui permettra de caractériser le user

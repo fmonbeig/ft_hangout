@@ -9,6 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import HelperClass.DbHelper;
+import HelperClass.PreferenceHelper;
+import Pojo.Contact;
+
 public class ModifyContact extends AppCompatActivity {
 
     EditText            ed_name_modify;
@@ -16,9 +20,9 @@ public class ModifyContact extends AppCompatActivity {
     EditText            ed_address_modify;
     EditText            ed_phone_modify;
     EditText            ed_other_information_modify;
-    DbHelper            databaseHelper;
-    PreferenceHelper    preferenceHelper;
-    Contact             contact;
+    DbHelper databaseHelper;
+    PreferenceHelper preferenceHelper;
+    Contact contact;
     Button              ok;
 
     @Override

@@ -9,10 +9,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import HelperClass.DbHelper;
+import HelperClass.PreferenceHelper;
+import Pojo.Contact;
+
 public class CreateContact extends AppCompatActivity {
 
     Button      btn_create;
-    DbHelper    databaseHelper;
+    DbHelper databaseHelper;
     PreferenceHelper preferenceHelper;
     EditText    et_first_name, et_name, et_phone, et_address, et_other_information;
 

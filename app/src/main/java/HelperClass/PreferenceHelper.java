@@ -1,4 +1,4 @@
-package com.example.ft_hangout;
+package HelperClass;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

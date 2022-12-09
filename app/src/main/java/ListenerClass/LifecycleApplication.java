@@ -1,4 +1,4 @@
-package com.example.ft_hangout;
+package ListenerClass;
 
 import android.app.Application;
 import android.util.Log;
@@ -8,9 +8,11 @@ import androidx.lifecycle.DefaultLifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ProcessLifecycleOwner;
 
+import HelperClass.PreferenceHelper;
+
 public class LifecycleApplication extends Application
         implements DefaultLifecycleObserver {
-    PreferenceHelper    preferenceHelper;
+    PreferenceHelper preferenceHelper;
 
     @Override
     public void onCreate() {

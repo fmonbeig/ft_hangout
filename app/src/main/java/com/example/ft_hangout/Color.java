@@ -1,17 +1,17 @@
 package com.example.ft_hangout;
 
-import androidx.annotation.ColorInt;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.text.Html;
-import android.util.Log;
 import android.view.View;
 
+import HelperClass.PreferenceHelper;
+import com.example.ft_hangout.R;
+
 public class Color extends AppCompatActivity {
-    PreferenceHelper    preferenceHelper;
+    PreferenceHelper preferenceHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

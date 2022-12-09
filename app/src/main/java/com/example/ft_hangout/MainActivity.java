@@ -12,7 +12,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.view.Menu;
-import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import Adapter.ListContactAdapter;
+import HelperClass.DbHelper;
+import HelperClass.PreferenceHelper;
+import Pojo.Contact;
+import Pojo.RowContactList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     DbHelper            databaseHelper;
     PreferenceHelper    preferenceHelper;
     ArrayAdapter        contactArrayAdapter;
+    ListContactAdapter listContactAdapter;
 
     //**************************//
     //     LIFE CYCLE           //
@@ -42,14 +51,14 @@ public class MainActivity extends AppCompatActivity {
         preferenceHelper = new PreferenceHelper();
         showContactList();
 
-
         //On click listener for every element
         lv_contact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent contactCardActivity = new Intent(MainActivity.this, ContactCard.class);
-                Contact contactClick = (Contact) adapterView.getItemAtPosition(i);
-                contactCardActivity.putExtra("contactInfo", contactClick); // On passe une string dans l'Itent mais on peut aussi passer une collection
+                RowContactList contactClick = (RowContactList) adapterView.getItemAtPosition(i);
+                //We can pass Object in putExtra but the Object have to  implement Serializable
+                contactCardActivity.putExtra("contactInfo", contactClick);
                 startActivity(contactCardActivity);
             }
         });
@@ -95,20 +104,30 @@ public class MainActivity extends AppCompatActivity {
     //     OTHER METHODS        //
     //**************************//
 
-    //launch the toString method for every Contact Object
     public void showContactList(){
-        contactArrayAdapter = new ArrayAdapter<Contact>(MainActivity.this,
-                android.R.layout.simple_list_item_1, databaseHelper.getEveryOne());
-        lv_contact.setAdapter(contactArrayAdapter);
+        listContactAdapter = new ListContactAdapter(MainActivity.this, createListContact());
+        lv_contact.setAdapter(listContactAdapter);
+    }
+
+    public ArrayList<RowContactList> createListContact(){
+        RowContactList rowContactList;
+        ArrayList<RowContactList> returnlist = new ArrayList<>();
+        List<Contact> list = databaseHelper.getEveryOne();
+        for (int i = 0; i < list.size(); i++)
+        {
+            String fullName = list.get(i).getFirstName() + " " + list.get(i).getName();
+            rowContactList = new RowContactList(fullName, list.get(i).getPhone(),
+                    list.get(i).getId());
+            returnlist.add(rowContactList);
+        }
+        return returnlist;
     }
 }
 
 /* A FAIRE
-*  Tester sur un smartphone et changer la langue en par default puis en fr
+*  Tester sur un smartphone et changer la langue en par default puis en fr + SMS
 *  Gérer le layout horizontale
-*  Gérer le fait de pouvoir envoyer un texto
 *  Front end un peu plus stylé
-*  Faire passer en String le phone avec un check sur du full num car le 0 part quand c'est du int?
 * */
 
 /*                    LIFE CYCLE

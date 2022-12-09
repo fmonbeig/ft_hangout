@@ -1,4 +1,4 @@
-package com.example.ft_hangout;
+package ListenerClass;
 
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
@@ -9,6 +9,10 @@ import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.util.Log;
 import android.widget.Toast;
+
+import Pojo.Contact;
+
+import HelperClass.DbHelper;
 
 public class MyReceiver extends BroadcastReceiver {
     DbHelper databaseHelper;
@@ -72,7 +76,7 @@ public class MyReceiver extends BroadcastReceiver {
         String messageAppend;
 
         messageAppend = contact.getMessage();
-        messageAppend += str + "\n";
+        messageAppend += "RECEIVEBY\r" + str;
         contact.setMessage(messageAppend);
         databaseHelper.modifyMessageContent(contact);
     }

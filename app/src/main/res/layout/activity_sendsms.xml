@@ -53,8 +53,8 @@
 
     <ListView
         android:id="@+id/lv_sms_historical"
-        android:layout_width="397dp"
-        android:layout_height="479dp"
+        android:layout_width="383dp"
+        android:layout_height="473dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"

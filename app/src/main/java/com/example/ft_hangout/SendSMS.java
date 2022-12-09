@@ -7,11 +7,11 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,7 +19,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import Adapter.MessageAdapter;
+import HelperClass.DbHelper;
+import HelperClass.PreferenceHelper;
+import Pojo.Contact;
+import Pojo.RowContactList;
 
 public class SendSMS extends AppCompatActivity {
 
@@ -29,11 +36,11 @@ public class SendSMS extends AppCompatActivity {
     TextView            tv_contact_sendsms;
     ListView            lv_sms_historical;
     EditText            et_message_content;
-    DbHelper            databaseHelper;
-    PreferenceHelper    preferenceHelper;
-    Contact             contact;
+    DbHelper databaseHelper;
+    PreferenceHelper preferenceHelper;
+    Contact contact;
     SmsManager          smsManager;
-    ArrayAdapter        contactArrayAdapter;
+    MessageAdapter      messageAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +84,7 @@ public class SendSMS extends AppCompatActivity {
                             smsMessage,
                             null, null);
                     messageAppend = contact.getMessage();
-                    messageAppend += smsMessage + "\n";
+                    messageAppend += "SENDBY\r" + smsMessage + "\n";
                     contact.setMessage(messageAppend);
                     databaseHelper.modifyMessageContent(contact);
                     showMessage();
@@ -125,8 +132,12 @@ public class SendSMS extends AppCompatActivity {
 
     public void showMessage(){
         Contact user = databaseHelper.getOneContactById(contact.getId());
-        contactArrayAdapter = new ArrayAdapter<String>(SendSMS.this,
-                android.R.layout.select_dialog_item, user.getEveryMessage());
-        lv_sms_historical.setAdapter(contactArrayAdapter);
+        ArrayList<String> everyMessage = new ArrayList<String>(user.getEveryMessage());
+        messageAdapter = new MessageAdapter(SendSMS.this, everyMessage);
+        lv_sms_historical.setAdapter(messageAdapter);
+        lv_sms_historical.setTranscriptMode(AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
+        lv_sms_historical.setAdapter(messageAdapter);
+        lv_sms_historical.setDivider(null);
     }
+
 }
