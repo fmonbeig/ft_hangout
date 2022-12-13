@@ -8,4 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red_50">#F10000</color>
+    <color name="sender">#C6E8AE00</color>
+    <color name="receiver">#E408AAF4</color>
+    <color name="text">#4BC4FF</color>
+    <color name="text2">#00FFC4</color>
+    <color name="button">#F9A825</color>
+    <color name="background">#FF000000</color>
+    <color name="text_shadow">#7FFFFFFF</color>
+
 </resources>

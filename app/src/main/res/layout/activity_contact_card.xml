@@ -1,26 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ContactCard">
+    android:orientation="vertical"
+    tools:context=".ContactCard"
+    android:background="@color/background"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        >
 
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="140dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="120dp"
-        android:layout_marginBottom="28dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/tv_phone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="FLORIAN MONBEIG"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_bin"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/btn_bin"
+            android:layout_width="30dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/bin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/button"></ImageView>
+
+        <TextView
+            android:id="@+id/delete_info"
+            style="@style/Text"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:textAlignment="center"
+            android:text="Delete"
+            android:textSize="8sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_bin" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
     <TextView
+        style="@style/Text"
         android:id="@+id/tv_phone"
         android:layout_width="310dp"
         android:layout_height="42dp"
@@ -28,11 +66,9 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="83dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
-
+        />
     <TextView
+        style="@style/Text"
         android:id="@+id/tv_address"
         android:layout_width="310dp"
         android:layout_height="42dp"
@@ -45,6 +81,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_phone" />
 
     <TextView
+        style="@style/Text"
         android:id="@+id/tv_other_information"
         android:layout_width="310dp"
         android:layout_height="42dp"
@@ -52,9 +89,7 @@
         android:layout_marginTop="21dp"
         android:layout_marginEnd="85dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_address" />
+        />
 
     <Button
         android:id="@+id/btn_delete"
@@ -64,9 +99,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="30dp"
         android:text="@string/Delete"
-        app:layout_constraintEnd_toStartOf="@+id/btn_modify"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_other_information" />
+        />
 
     <Button
         android:id="@+id/btn_modify"
@@ -75,10 +108,8 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="184dp"
-        android:text="@string/Modify"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_delete"
-        app:layout_constraintTop_toBottomOf="@+id/tv_other_information" />
+        android:text="Modify"
+        />
 
     <Button
         android:id="@+id/btn_text"
@@ -88,7 +119,6 @@
         android:layout_marginTop="41dp"
         android:layout_marginEnd="29dp"
         android:text="Text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_modify"
-        app:layout_constraintTop_toBottomOf="@+id/tv_other_information" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+ />
+</LinearLayout>
+</LinearLayout>

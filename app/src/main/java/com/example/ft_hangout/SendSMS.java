@@ -36,9 +36,9 @@ public class SendSMS extends AppCompatActivity {
     TextView            tv_contact_sendsms;
     ListView            lv_sms_historical;
     EditText            et_message_content;
-    DbHelper databaseHelper;
-    PreferenceHelper preferenceHelper;
-    Contact contact;
+    DbHelper            databaseHelper;
+    PreferenceHelper    preferenceHelper;
+    Contact             contact;
     SmsManager          smsManager;
     MessageAdapter      messageAdapter;
 

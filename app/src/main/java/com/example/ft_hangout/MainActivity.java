@@ -2,14 +2,20 @@ package com.example.ft_hangout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.view.Menu;
 
@@ -28,11 +34,10 @@ public class MainActivity extends AppCompatActivity {
     //     LAYOUT AND VARIABLES //
     //**************************//
 
-    Button              btn_create;
+    ImageView           btn_add;
     ListView            lv_contact;
     DbHelper            databaseHelper;
     PreferenceHelper    preferenceHelper;
-    ArrayAdapter        contactArrayAdapter;
     ListContactAdapter listContactAdapter;
 
     //**************************//
@@ -45,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // reference to all the button and Layout
-        btn_create = findViewById(R.id.btn_create);
+        btn_add = findViewById(R.id.btn_add);
         lv_contact = findViewById(R.id.lv_contact);
         databaseHelper = new DbHelper(MainActivity.this);
         preferenceHelper = new PreferenceHelper();
@@ -60,6 +65,14 @@ public class MainActivity extends AppCompatActivity {
                 //We can pass Object in putExtra but the Object have to  implement Serializable
                 contactCardActivity.putExtra("contactInfo", contactClick);
                 startActivity(contactCardActivity);
+            }
+        });
+
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                btn_add.setColorFilter(ContextCompat.getColor(MainActivity.this, R.color.white));
+                launchCreateContact(v);
             }
         });
     }
@@ -84,9 +97,8 @@ public class MainActivity extends AppCompatActivity {
             case R.id.color:
                 Intent i = new Intent(this, Color.class );
                 startActivity(i);
-            case R.id.language:
-                Intent j = new Intent(android.provider.Settings.ACTION_APPLICATION_SETTINGS);
-                startActivity(j);
+//                Intent j = new Intent(android.provider.Settings.ACTION_APPLICATION_SETTINGS);
+//                startActivity(j);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -126,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
 
 /* A FAIRE
 *  Tester sur un smartphone et changer la langue en par default puis en fr + SMS
+* Ne pas créer de contacts vident au niveau du Name FirstName et
 *  Gérer le layout horizontale
 *  Front end un peu plus stylé
 * */

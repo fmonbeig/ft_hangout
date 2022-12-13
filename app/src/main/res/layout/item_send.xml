@@ -12,7 +12,7 @@
         android:layout_margin="5sp"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/round_corner"
+        android:background="@drawable/round_corner_sender"
         android:shadowColor="@color/ic_launcher_background"
         android:shadowDx="1"
         android:shadowDy="1"

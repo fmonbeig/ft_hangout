@@ -12,12 +12,13 @@
         android:layout_margin="5sp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="5dp"
-        android:background="@color/teal_200"
+        android:background="@drawable/round_corner_receiver"
         android:shadowColor="@color/ic_launcher_background"
         android:shadowDx="1"
         android:shadowDy="1"
         android:text="Medium Text"
         android:textColor="@color/black"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        />
 
 </LinearLayout>

@@ -39,6 +39,11 @@ public class CreateContact extends AppCompatActivity {
             public void onClick(View view) {
                 Contact newContact;
                 try {
+                    if (et_first_name.getText().toString().isEmpty() &&
+                            et_name.getText().toString().isEmpty()){
+                        Toast.makeText(CreateContact.this, "Please put a name"  , Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     newContact = new Contact(-1, et_first_name.getText().toString(), et_name.getText().toString(),
                             et_phone.getText().toString(), et_address.getText().toString(),
                             et_other_information.getText().toString(), " ");
