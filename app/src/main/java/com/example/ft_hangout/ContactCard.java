@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import HelperClass.DbHelper;
@@ -21,9 +22,10 @@ public class ContactCard extends AppCompatActivity {
     TextView            tv_address;
     TextView            tv_phone;
     TextView            tv_other_information;
-    Button              btn_delete;
-    Button              btn_modify;
-    Button              btn_text;
+    ImageView           btn_bin;
+    ImageView           btn_modify_contact;
+    ImageView           btn_text;
+    ImageView           btn_call;
     RowContactList      rowContactList;
     Contact             contact;
     DbHelper            databaseHelper;
@@ -40,9 +42,10 @@ public class ContactCard extends AppCompatActivity {
         tv_address = findViewById(R.id.tv_address);
         tv_phone = findViewById(R.id.tv_phone);
         tv_other_information = findViewById(R.id.tv_other_information);
-        btn_delete = findViewById(R.id.btn_delete);
-        btn_modify = findViewById(R.id.btn_modify);
+        btn_bin = findViewById(R.id.btn_bin);
+        btn_modify_contact = findViewById(R.id.btn_modify_contact);
         btn_text = findViewById(R.id.btn_text);
+        btn_call = findViewById(R.id.btn_call);
         databaseHelper = new DbHelper(ContactCard.this);
         preferenceHelper = new PreferenceHelper();
 
@@ -56,21 +59,29 @@ public class ContactCard extends AppCompatActivity {
         tv_other_information.setText(contact.getOtherInformation());
 
         /* On Click Listener */
-        btn_delete.setOnClickListener(new View.OnClickListener() {
+
+        btn_bin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 databaseHelper.deleteOne(contact);
                 Intent i = new Intent(ContactCard.this, MainActivity.class);
                 startActivity(i);
             }
         });
 
-        btn_modify.setOnClickListener(new View.OnClickListener() {
+        btn_modify_contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent modifyContact = new Intent(ContactCard.this, ModifyContact.class);
                 modifyContact.putExtra("contactInfo", contact);
                 startActivity(modifyContact);
+            }
+        });
+
+        btn_call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
@@ -82,6 +93,7 @@ public class ContactCard extends AppCompatActivity {
                 startActivity(sendSMS);
             }
         });
+
     }
 
     @Override

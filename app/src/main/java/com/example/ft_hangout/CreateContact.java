@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 import HelperClass.DbHelper;
 import HelperClass.PreferenceHelper;
 import Pojo.Contact;
@@ -18,7 +20,7 @@ public class CreateContact extends AppCompatActivity {
     Button      btn_create;
     DbHelper databaseHelper;
     PreferenceHelper preferenceHelper;
-    EditText    et_first_name, et_name, et_phone, et_address, et_other_information;
+    TextInputEditText et_first_name, et_name, et_phone, et_address, et_other_information;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

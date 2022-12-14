@@ -9,14 +9,7 @@
     android:background="@color/background"
     tools:context=".ModifyContact">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Title"
-        android:text="MODIFY"
-        android:textAlignment="center"
-        android:layout_marginTop="24dp"
-       ></TextView>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_first_name"
@@ -26,7 +19,7 @@
         android:layout_height="wrap_content"
         android:background="@color/background"
         android:hint="@string/First_Name"
-        android:layout_marginTop="80dp"
+        android:textSize="12sp"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -35,6 +28,7 @@
             android:layout_height="wrap_content"
             android:background="@color/background"
             android:textColor="@color/button"
+            android:textSize="12sp"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -45,7 +39,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/background"
-        android:hint="@string/Name">
+        android:hint="@string/Name"
+        android:textSize="12sp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_name_modify"
@@ -53,6 +48,7 @@
             android:layout_height="wrap_content"
             android:background="@color/background"
             android:textColor="@color/button"
+            android:textSize="12sp"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,7 +59,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/background"
-        android:hint="@string/Phone">
+        android:hint="@string/Phone"
+        android:textSize="12sp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_phone_modify"
@@ -71,6 +68,7 @@
             android:layout_height="wrap_content"
             android:background="@color/background"
             android:textColor="@color/button"
+            android:textSize="12sp"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,7 +79,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/background"
-        android:hint="@string/Address">
+        android:hint="@string/Address"
+        android:textSize="12sp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_address_modify"
@@ -89,6 +88,7 @@
             android:layout_height="wrap_content"
             android:background="@color/background"
             android:textColor="@color/button"
+            android:textSize="12sp"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -100,26 +100,27 @@
         android:background="@color/background"
         android:hint="@string/Other_Information"
         android:orientation="vertical"
-        android:textColorHint="@color/text">
+        android:textColorHint="@color/text"
+        android:textSize="12sp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_other_information_modify"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background"
-            android:textColor="@color/button" />
+            android:textColor="@color/button"
+            android:textSize="12sp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_ok_modify"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="33dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="80dp"
-        android:text="@string/ok"
         android:backgroundTint="@color/button"
+        android:text="@string/ok"
+        android:textSize="10sp"
         app:rippleColor="@color/background"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        />
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
 </LinearLayout>

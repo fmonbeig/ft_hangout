@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+
 import HelperClass.DbHelper;
 import HelperClass.PreferenceHelper;
 import Pojo.Contact;
@@ -16,13 +19,14 @@ import Pojo.Contact;
 public class ModifyContact extends AppCompatActivity {
 
     EditText            ed_name_modify;
-    EditText            ed_first_name_modify;
-    EditText            ed_address_modify;
-    EditText            ed_phone_modify;
-    EditText            ed_other_information_modify;
-    DbHelper databaseHelper;
-    PreferenceHelper preferenceHelper;
-    Contact contact;
+    TextInputEditText   ed_first_name_modify;
+    TextInputEditText   ed_address_modify;
+    TextInputEditText   ed_other_information_modify;
+    TextInputEditText   ed_phone_modify;
+    DbHelper            databaseHelper;
+
+    PreferenceHelper    preferenceHelper;
+    Contact             contact;
     Button              ok;
 
     @Override
@@ -33,8 +37,9 @@ public class ModifyContact extends AppCompatActivity {
         ed_name_modify = findViewById(R.id.ed_name_modify);
         ed_first_name_modify = findViewById(R.id.ed_first_name_modify);
         ed_address_modify = findViewById(R.id.ed_address_modify);
-        ed_phone_modify = findViewById(R.id.ed_phone_modify);
         ed_other_information_modify = findViewById(R.id.ed_other_information_modify);
+        ed_phone_modify = findViewById(R.id.ed_phone_modify);
+
         ok = findViewById(R.id.btn_ok_modify);
 
         databaseHelper = new DbHelper(ModifyContact.this);
@@ -44,8 +49,8 @@ public class ModifyContact extends AppCompatActivity {
 
         ed_name_modify.setText(contact.getName());
         ed_first_name_modify.setText(contact.getFirstName());
-        ed_address_modify.setText(contact.getAddress());
         ed_phone_modify.setText(contact.getPhone());
+        ed_address_modify.setText(contact.getAddress());
         ed_other_information_modify.setText(contact.getOtherInformation());
 
         ok.setOnClickListener(new View.OnClickListener() {

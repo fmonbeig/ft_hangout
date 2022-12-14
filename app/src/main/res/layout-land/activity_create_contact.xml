@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
-        android:background="@color/black"
+        android:background="@color/background"
         android:gravity="left"
         >
 
@@ -37,6 +37,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginLeft="350dp"
             android:backgroundTint="@color/button"
+            app:rippleColor="@color/background"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:textSize="15sp"
             android:text="@string/Create"
             />
@@ -48,88 +50,94 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/black"
+        android:background="@color/background"
         >
 
-    <EditText
-        android:id="@+id/et_first_name"
-        android:layout_width="349dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:focusable="true"
-        android:hint="@string/First_Name"
-        android:inputType="textPersonName"
-        android:textColor="@color/text"
-        android:textColorHint="@color/text"
-        android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_new_contact" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
+            android:textColorHint="@color/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:hint="@string/First_Name"
+            >
 
-    <EditText
-        android:id="@+id/et_name"
-        android:layout_width="349dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:hint="@string/Name"
-        android:inputType="textPersonName"
-        android:textColor="@color/text"
-        android:textColorHint="@color/text"
-        android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@+id/et_first_name" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_first_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:textColor="@color/button"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/et_phone"
-        android:layout_width="349dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:hint="@string/Phone"
-        android:inputType="textPersonName"
-        android:textColor="@color/text"
-        android:textColorHint="@color/text"
-        android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@+id/et_name" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
+            android:textColorHint="@color/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:hint="@string/Name">
 
-    <EditText
-        android:id="@+id/et_address"
-        android:layout_width="349dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:hint="@string/Address"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@color/text"
-        android:textColorHint="@color/text"
-        android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@+id/et_phone" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:textColor="@color/button"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/et_other_information"
-        android:layout_width="349dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:hint="@string/Other_Information"
-        android:inputType="textPersonName"
-        android:textColor="@color/text"
-        android:textColorHint="@color/text"
-        android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@+id/et_address"
-        />
+        <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
+            android:textColorHint="@color/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:hint="@string/Phone">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:textColor="@color/button"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
+            android:textColorHint="@color/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:hint="@string/Address">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:textColor="@color/button"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="?attr/textInputFilledStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:hint="@string/Other_Information"
+            android:orientation="vertical"
+            android:textColorHint="@color/text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_other_information"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:textColor="@color/button" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
 </LinearLayout>

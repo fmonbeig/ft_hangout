@@ -4,4 +4,9 @@
     <item name="android:textColor">@color/text</item>
     <item name="android:textSize">15sp</item>
 </style>
+    <style name="Title" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 </resources>
