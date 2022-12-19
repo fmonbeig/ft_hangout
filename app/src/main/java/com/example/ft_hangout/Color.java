@@ -28,41 +28,40 @@ public class Color extends AppCompatActivity {
         preferenceHelper.setColor(this, getSupportActionBar());
     }
 
-    public void ChangeInBlue(View v)
-    {
-        ActionBar aBar;
-        aBar= getSupportActionBar();
-        ColorDrawable cd = new ColorDrawable(android.graphics.Color.parseColor("#0475A1"));
-        aBar.setBackgroundDrawable(cd);
-        preferenceHelper.newColor(this, "#0475A1");
-//        aBar.setTitle("Bonjour");
-    }
-
     public void ChangeInGreen(View v)
     {
         ActionBar aBar;
         aBar= getSupportActionBar();
-        ColorDrawable cd = new ColorDrawable(android.graphics.Color.parseColor("#4CAF50"));
+        ColorDrawable cd = new ColorDrawable(android.graphics.Color.parseColor("#D0F0C0"));
         aBar.setBackgroundDrawable(cd);
-        preferenceHelper.newColor(this, "#4CAF50");
+        preferenceHelper.newColor(this, "#D0F0C0");
     }
 
-    public void ChangeInOrange(View v)
+    public void ChangeInBrown(View v)
     {
         ActionBar aBar;
         aBar= getSupportActionBar();
-        ColorDrawable cd = new ColorDrawable(android.graphics.Color.parseColor("#FF5722"));
+        ColorDrawable cd = new ColorDrawable(android.graphics.Color.parseColor("#755656"));
         aBar.setBackgroundDrawable(cd);
-        preferenceHelper.newColor(this, "#FF5722");
+        preferenceHelper.newColor(this, "#755656");
+    }
+
+    public void ChangeInBackground(View v)
+    {
+        ActionBar aBar;
+        aBar= getSupportActionBar();
+        ColorDrawable cd = new ColorDrawable(android.graphics.Color.parseColor("#FAEEEA"));
+        aBar.setBackgroundDrawable(cd);
+        preferenceHelper.newColor(this, "#FAEEEA");
     }
 
     public void ChangeInPink(View v)
     {
         ActionBar aBar;
         aBar= getSupportActionBar();
-        ColorDrawable cd = new ColorDrawable(android.graphics.Color.parseColor("#E91E63"));
+        ColorDrawable cd = new ColorDrawable(android.graphics.Color.parseColor("#F89ABA"));
         aBar.setBackgroundDrawable(cd);
-        preferenceHelper.newColor(this, "#E91E63");
+        preferenceHelper.newColor(this, "#F89ABA");
     }
 
 }

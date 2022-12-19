@@ -6,6 +6,7 @@
         android:id="@+id/color"
         android:title="@string/Color"
         app:showAsAction="never"
+        android:fontFamily="@font/the_font"
         />
 
 </menu>

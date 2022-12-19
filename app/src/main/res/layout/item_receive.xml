@@ -6,6 +6,7 @@
 
     <TextView
         android:id="@+id/msgr"
+        android:fontFamily="@font/the_font"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
@@ -18,7 +19,7 @@
         android:shadowDy="1"
         android:text="Medium Text"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
         />
 
 </LinearLayout>

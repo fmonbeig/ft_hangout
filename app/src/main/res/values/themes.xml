@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.Ft_hangout" parent="Theme.MaterialComponents.Light">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/text</item>
+        <item name="colorPrimary">#FAEEEA</item>
         <item name="colorPrimaryVariant">#3700B3</item>
         <item name="colorOnPrimary">#FFFFFF</item>
         <!-- Secondary brand color. -->

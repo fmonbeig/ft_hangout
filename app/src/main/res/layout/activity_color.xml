@@ -25,25 +25,25 @@
         android:id="@+id/button10"
         android:layout_width="188dp"
         android:layout_height="131dp"
-        android:backgroundTint="#4CAF50"
+        android:backgroundTint="#755656"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
-        android:onClick="ChangeInGreen"
+        android:onClick="ChangeInBrown"
         />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="188dp"
         android:layout_height="131dp"
-        android:backgroundTint="#0475A1"
+        android:backgroundTint="#FAEEEA"
         android:layout_gravity="center"
-        android:onClick="ChangeInBlue" />
+        android:onClick="ChangeInBackground" />
 
     <Button
         android:id="@+id/button12"
         android:layout_width="188dp"
         android:layout_height="131dp"
-        android:backgroundTint="#E91E63"
+        android:backgroundTint="#F89ABA"
         android:layout_gravity="center"
         android:onClick="ChangeInPink"
         />
@@ -52,9 +52,8 @@
         android:id="@+id/button11"
         android:layout_width="188dp"
         android:layout_height="131dp"
-        android:backgroundTint="#FF5722"
         android:layout_gravity="center"
-        android:onClick="ChangeInOrange"
-        />
+        android:backgroundTint="#D0F0C0"
+        android:onClick="ChangeInGreen" />
 
 </LinearLayout>

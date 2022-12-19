@@ -11,6 +11,7 @@
 
     <TextView
         android:id="@+id/tv_new_contact"
+        style="@style/Title"
         android:layout_width="349dp"
         android:layout_height="44dp"
         android:layout_marginStart="16dp"
@@ -36,6 +37,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_first_name"
+            style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background"
@@ -53,6 +55,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_name"
+            style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background"
@@ -70,6 +73,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_phone"
+            style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background"
@@ -87,6 +91,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_address"
+            style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background"
@@ -105,6 +110,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_other_information"
+            style="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background"
@@ -113,6 +119,7 @@
 
     <Button
         android:id="@+id/btn_create"
+        android:fontFamily="@font/the_font"
         android:layout_width="174dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
