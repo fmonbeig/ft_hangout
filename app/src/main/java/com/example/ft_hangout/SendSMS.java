@@ -1,9 +1,5 @@
 package com.example.ft_hangout;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,21 +8,22 @@ import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
 import java.util.ArrayList;
-import java.util.List;
 
 import Adapter.MessageAdapter;
 import HelperClass.DbHelper;
 import HelperClass.PreferenceHelper;
 import Pojo.Contact;
-import Pojo.RowContactList;
 
 public class SendSMS extends AppCompatActivity {
 
@@ -91,6 +88,12 @@ public class SendSMS extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        preferenceHelper.setColor(this, getSupportActionBar());
     }
 
     private void checkForSmsPermission() {

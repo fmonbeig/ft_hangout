@@ -13,6 +13,7 @@
         android:layout_margin="5sp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="5dp"
+        android:layout_marginStart="16dp"
         android:background="@drawable/round_corner_receiver"
         android:shadowColor="@color/ic_launcher_background"
         android:shadowDx="1"

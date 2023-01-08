@@ -8,10 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import Pojo.Contact;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import Pojo.Contact;
 
 public class DbHelper  extends SQLiteOpenHelper {
 
@@ -23,17 +23,18 @@ public class DbHelper  extends SQLiteOpenHelper {
     public static final String COLUMN_ADDRESS = "COLUMN_ADDRESS";
     public static final String COLUMN_OTHER_INFORMATION = "COLUMN_OTHER_INFORMATION";
     public static final String COLUMN_MESSAGE = "COLUMN_MESSAGE";
+    public static final String COLUMN_PICTURE = "COLUMN_PICTURE";
 
     public DbHelper(@Nullable Context context) {
-        super(context, "contact_db", null, 6);
+        super(context, "contact_db", null, 7);
     }
 
     // First write the query creating the table then refactor variable with constant
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String createTableStatement = "CREATE TABLE " + CONTACT_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_FIRST_NAME + " TEXT, " + COLUMN_NAME + " TEXT, " + COLUMN_PHONE + " TEXT, " + COLUMN_ADDRESS + " TEXT, " + COLUMN_OTHER_INFORMATION + " TEXT"
-                + COLUMN_MESSAGE + "TEXT)";
+                COLUMN_FIRST_NAME + " TEXT, " + COLUMN_NAME + " TEXT, " + COLUMN_PHONE + " TEXT, " + COLUMN_ADDRESS + " TEXT, " + COLUMN_OTHER_INFORMATION + " TEXT, "
+                + COLUMN_MESSAGE + " TEXT, " + COLUMN_PICTURE + " TEXT)";
         sqLiteDatabase.execSQL(createTableStatement);
     }
 
@@ -42,8 +43,7 @@ public class DbHelper  extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // If you need to add a new column
         if (newVersion > oldVersion) {
-            db.execSQL("ALTER TABLE CONTACT_TABLE ADD COLUMN COLUMN_MESSAGE STRING");
-//            db.execSQL("DROP TABLE CONTACT_TABLE");
+            db.execSQL("ALTER TABLE CONTACT_TABLE ADD COLUMN COLUMN_PICTURE STRING");
         }
     }
 
@@ -61,7 +61,8 @@ public class DbHelper  extends SQLiteOpenHelper {
         cv.put(COLUMN_PHONE, contact.getPhone());
         cv.put(COLUMN_ADDRESS, contact.getAddress());
         cv.put(COLUMN_OTHER_INFORMATION, contact.getOtherInformation());
-        cv.put(COLUMN_MESSAGE, "Bonjour\n");
+        cv.put(COLUMN_MESSAGE, "");
+        cv.put(COLUMN_PICTURE, contact.getPicture());
         //writing inside the DB
         long insert = db.insert(CONTACT_TABLE, null, cv);
         db.close();
@@ -83,6 +84,7 @@ public class DbHelper  extends SQLiteOpenHelper {
         cv.put(COLUMN_PHONE, contact.getPhone());
         cv.put(COLUMN_ADDRESS, contact.getAddress());
         cv.put(COLUMN_OTHER_INFORMATION, contact.getOtherInformation());
+        cv.put(COLUMN_PICTURE, contact.getPicture());
 
         long insert = db.update(CONTACT_TABLE, cv,COLUMN_ID + "=?",
                 new String[] {Integer.toString(contact.getId())} );
@@ -106,6 +108,7 @@ public class DbHelper  extends SQLiteOpenHelper {
         cv.put(COLUMN_ADDRESS, contact.getAddress());
         cv.put(COLUMN_OTHER_INFORMATION, contact.getOtherInformation());
         cv.put(COLUMN_MESSAGE, contact.getMessage());
+        cv.put(COLUMN_PICTURE, contact.getPicture());
 
         long insert = db.update(CONTACT_TABLE, cv,COLUMN_ID + "=?",
                 new String[] {Integer.toString(contact.getId())} );
@@ -154,9 +157,10 @@ public class DbHelper  extends SQLiteOpenHelper {
                 String contactAddress = cursor.getString(4);
                 String contactOtherInformation = cursor.getString(5);
                 String contactMessage = cursor.getString(6);
+                String contactPicture = cursor.getString(7);
                 Contact newContact = new Contact(contactID, contactFirstName, contactName,
                                                 contactPhone, contactAddress, contactOtherInformation,
-                                                contactMessage);
+                                                contactMessage, contactPicture);
                 returnList.add(newContact);
             } while (cursor.moveToNext());
         }
@@ -191,12 +195,4 @@ public class DbHelper  extends SQLiteOpenHelper {
         }
         return null;
     }
-
-    //**************************//
-    //     SMS SECTION          //
-    //**************************//
-
-
-
-
 }

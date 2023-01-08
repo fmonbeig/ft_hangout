@@ -17,12 +17,13 @@ public class Contact implements Serializable {
     private String  address;
     private String  otherInformation;
     private String  message;
+    private String  picture;
 
     public Contact() {
     }
 
     public Contact(int id, String firstName, String name, String phone, String address,
-                   String otherInformation, String message) {
+                   String otherInformation, String message, String picture) {
         this.id = id;
         this.firstName = firstName;
         this.name = name;
@@ -30,6 +31,7 @@ public class Contact implements Serializable {
         this.address = address;
         this.otherInformation = otherInformation;
         this.message = message;
+        this.picture = picture;
     }
 
     public int getId() {
@@ -88,15 +90,25 @@ public class Contact implements Serializable {
         this.message = message;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
     @Override
     public String toString() {
         return "Contact{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", name='" + name + '\'' +
-                ", phone=" + phone +
+                ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 ", otherInformation='" + otherInformation + '\'' +
+                ", message='" + message + '\'' +
+                ", picture='" + picture + '\'' +
                 '}';
     }
 

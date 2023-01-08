@@ -1,17 +1,17 @@
 package com.example.ft_hangout;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import HelperClass.DbHelper;
+import androidx.appcompat.app.AppCompatActivity;
 
+import HelperClass.DbHelper;
 import HelperClass.PreferenceHelper;
 import Pojo.Contact;
 import Pojo.RowContactList;
@@ -26,6 +26,7 @@ public class ContactCard extends AppCompatActivity {
     ImageView           btn_modify_contact;
     ImageView           btn_text;
     ImageView           btn_call;
+    ImageView           iv_picture_info;
     RowContactList      rowContactList;
     Contact             contact;
     DbHelper            databaseHelper;
@@ -46,6 +47,7 @@ public class ContactCard extends AppCompatActivity {
         btn_modify_contact = findViewById(R.id.btn_modify_contact);
         btn_text = findViewById(R.id.btn_text);
         btn_call = findViewById(R.id.btn_call);
+        iv_picture_info = findViewById(R.id.iv_picture_info);
         databaseHelper = new DbHelper(ContactCard.this);
         preferenceHelper = new PreferenceHelper();
 
@@ -57,6 +59,11 @@ public class ContactCard extends AppCompatActivity {
         tv_address.setText(contact.getAddress());
         tv_phone.setText(contact.getPhone());
         tv_other_information.setText(contact.getOtherInformation());
+
+        String pic_path = contact.getPicture();
+        if (pic_path != null) {
+            pictureDisplay(pic_path);
+        }
 
         /* On Click Listener */
 
@@ -101,4 +108,13 @@ public class ContactCard extends AppCompatActivity {
         super.onResume();
         preferenceHelper.setColor(this, getSupportActionBar());
     }
+
+    void pictureDisplay(String Picture_path){
+        Log.d("uri pict", Picture_path);
+        Uri picture = Uri.parse(Picture_path);
+        if (picture != null && !picture.equals(Uri.EMPTY)) {
+            iv_picture_info.setImageURI(picture);
+        }
+    }
+
 }

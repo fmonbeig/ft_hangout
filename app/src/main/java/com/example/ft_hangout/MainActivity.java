@@ -1,23 +1,16 @@
 package com.example.ft_hangout;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.content.res.AppCompatResources;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
-
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.view.Menu;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     ListView            lv_contact;
     DbHelper            databaseHelper;
     PreferenceHelper    preferenceHelper;
-    ListContactAdapter listContactAdapter;
+    ListContactAdapter  listContactAdapter;
 
     //**************************//
     //     LIFE CYCLE           //
@@ -71,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                btn_add.setColorFilter(ContextCompat.getColor(MainActivity.this, R.color.white));
                 launchCreateContact(v);
             }
         });
@@ -128,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < list.size(); i++)
         {
             String fullName = list.get(i).getFirstName() + " " + list.get(i).getName();
-            rowContactList = new RowContactList(fullName, list.get(i).getPhone(),
+            rowContactList = new RowContactList(fullName, list.get(i).getPhone(), list.get(i).getPicture(),
                     list.get(i).getId());
             returnlist.add(rowContactList);
         }

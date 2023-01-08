@@ -1,17 +1,21 @@
 package Adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.ft_hangout.R;
 
 import java.util.ArrayList;
+
 import Pojo.RowContactList;
 
 public class ListContactAdapter extends ArrayAdapter<RowContactList>{
@@ -34,8 +38,14 @@ public class ListContactAdapter extends ArrayAdapter<RowContactList>{
 
             RowContactList currentRow = list.get(position);
 
-//            ImageView image = (ImageView)listItem.findViewById(R.id.imageView_poster);
-//            image.setImageResource(currentMovie.getmImageDrawable());
+            ImageView picture = (ImageView) listItem.findViewById(R.id.iv_Picture);
+            String pic_path = currentRow.getPicture();
+            if (pic_path != null) {
+                Uri picture_uri = Uri.parse(currentRow.getPicture());
+                if (picture_uri != null && !picture_uri.equals(Uri.EMPTY)) {
+                    picture.setImageURI(picture_uri);
+                }
+            }
 
             TextView name = (TextView) listItem.findViewById(R.id.tv_contact_list);
             name.setText(currentRow.getName());

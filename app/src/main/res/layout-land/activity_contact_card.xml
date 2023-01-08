@@ -28,6 +28,18 @@
             app:layout_constraintStart_toEndOf="@+id/btn_bin"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_picture_info"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="144dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/person"
+            app:layout_constraintStart_toEndOf="@+id/tv_name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/roundedImage" />
+
         <ImageView
             android:id="@+id/btn_bin"
             android:layout_width="30dp"

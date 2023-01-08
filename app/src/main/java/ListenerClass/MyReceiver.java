@@ -23,8 +23,8 @@ public class MyReceiver extends BroadcastReceiver {
         Contact contact;
 
         // Get the SMS message.
-        Log.d("SMS", "onReceiveRRRR: ");
-        Toast.makeText(context, "onReceiveRRRR: ", Toast.LENGTH_LONG).show();
+        Log.d("SMS", "SMS RECEIVE ");
+        Toast.makeText(context, "SMS RECEIVE: ", Toast.LENGTH_LONG).show();
         Bundle bundle = intent.getExtras();
         SmsMessage[] msgs;
         String strMessage = "";
@@ -60,15 +60,20 @@ public class MyReceiver extends BroadcastReceiver {
     public Contact contactFinder(String phone){
         Contact contact = databaseHelper.getOneContactByPhone(phone);
         if (contact == null) {
+            Log.d("NOT EXIST CONTACT", "NOT");
             contactCreation(phone);
             contact = databaseHelper.getOneContactByPhone(phone);
+        }
+        else
+        {
+            Log.d("EXIST CONTACT", "EXIST");
         }
         return contact;
     }
 
     public void contactCreation(String phone){
         Contact contact = new Contact(-1, "", phone,
-                phone, "", "", "");
+                phone, "", "", "", "");
         databaseHelper.addOne(contact);
     }
 

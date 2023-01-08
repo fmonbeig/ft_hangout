@@ -9,7 +9,41 @@
     android:background="@color/background"
     tools:context=".ModifyContact">
 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/background"
+        tools:context=".ModifyContact">
 
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_picture_mod"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/person"
+        app:shapeAppearanceOverlay="@style/roundedImage"
+        />
+
+        <Button
+            android:id="@+id/btn_ok_modify"
+            android:fontFamily="@font/the_font"
+            android:layout_width="50dp"
+            android:layout_height="33dp"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="@color/button"
+            android:layout_marginStart="50dp"
+            android:text="@string/ok"
+            android:textSize="10sp"
+            app:rippleColor="@color/background"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+
+
+    </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_first_name"
@@ -116,17 +150,4 @@
             android:textColor="@color/button"
             android:textSize="12sp"/>
     </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/btn_ok_modify"
-        android:fontFamily="@font/the_font"
-        android:layout_width="50dp"
-        android:layout_height="33dp"
-        android:layout_gravity="center_horizontal"
-        android:backgroundTint="@color/button"
-        android:text="@string/ok"
-        android:textSize="10sp"
-        app:rippleColor="@color/background"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
-
 </LinearLayout>

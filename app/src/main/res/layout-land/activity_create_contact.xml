@@ -17,19 +17,16 @@
         android:gravity="left"
         >
 
-        <TextView
-            android:id="@+id/tv_new_contact"
-            style="@style/Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginStart="32dp"
-            android:text="@string/NEW_CONTACT"
-            android:textColor="@color/text"
-            android:textColorHint="@color/text"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_picture_new"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/person"
+            app:shapeAppearanceOverlay="@style/roundedImage"
+            />
 
         <Button
             android:id="@+id/btn_create"

@@ -25,6 +25,16 @@
         android:layout_gravity="center"
         />
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_picture_new"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/person"
+        app:shapeAppearanceOverlay="@style/roundedImage"
+        />
+
     <com.google.android.material.textfield.TextInputLayout
         style="?attr/textInputFilledStyle"
         android:textColorHint="@color/text"
@@ -32,14 +42,14 @@
         android:layout_height="wrap_content"
         android:background="@color/background"
         android:hint="@string/First_Name"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="16dp"
         >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_first_name"
             style="@style/Text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="@color/background"
             android:textColor="@color/button"
             />
@@ -57,7 +67,7 @@
             android:id="@+id/et_name"
             style="@style/Text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="@color/background"
             android:textColor="@color/button"
             />
@@ -75,7 +85,7 @@
             android:id="@+id/et_phone"
             style="@style/Text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="@color/background"
             android:textColor="@color/button"
             />
@@ -93,7 +103,7 @@
             android:id="@+id/et_address"
             style="@style/Text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="@color/background"
             android:textColor="@color/button"
             />
@@ -112,7 +122,7 @@
             android:id="@+id/et_other_information"
             style="@style/Text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="@color/background"
             android:textColor="@color/button" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -125,7 +135,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="@color/button"
         android:textSize="15sp"
         android:text="@string/Create"
