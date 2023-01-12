@@ -108,7 +108,6 @@ public class CreateContact extends AppCompatActivity {
                 CreateContact.this.getContentResolver().takePersistableUriPermission(selectedImageUri,
                         Intent.FLAG_GRANT_READ_URI_PERMISSION
                                 | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-                //getPersistedUriPermissions()
                 if (null != selectedImageUri) {
                     // update the preview image in the layout
                     iv_picture_new.setImageURI(selectedImageUri);

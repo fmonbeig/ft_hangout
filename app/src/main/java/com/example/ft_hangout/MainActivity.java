@@ -128,13 +128,6 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 
-/* A FAIRE
-*  Tester sur un smartphone et changer la langue en par default puis en fr + SMS
-* Ne pas créer de contacts vident au niveau du Name FirstName et
-*  Gérer le layout horizontale
-*  Front end un peu plus stylé
-* */
-
 /*                    LIFE CYCLE
     When you open the app it will go through below states: onCreate() –> onStart() –> onResume()
 

@@ -60,7 +60,6 @@ public class ModifyContact extends AppCompatActivity {
         ed_address_modify.setText(contact.getAddress());
         ed_other_information_modify.setText(contact.getOtherInformation());
 
-//        imagePicker(contact.getPicture());
         pictureDisplay(contact.getPicture());
 
         iv_picture_mod.setOnClickListener(new View.OnClickListener() {
@@ -134,7 +133,6 @@ public class ModifyContact extends AppCompatActivity {
         // intent of the type image
         Intent i = new Intent();
         i.setType("image/*");
-//        i.setAction(Intent.ACTION_GET_CONTENT);
         i.setAction(Intent.ACTION_OPEN_DOCUMENT);
 
         // pass the constant to compare it

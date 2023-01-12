@@ -2,8 +2,6 @@ package Pojo;
 
 import android.util.Log;
 
-import org.intellij.lang.annotations.JdkConstants;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -119,5 +117,4 @@ public class Contact implements Serializable {
         Log.d("size of ArrayList", Integer.toString(everyMessage.size()));
         return everyMessage;
     }
-    //a chaque debut de message je mettrais un identifiant qui permettra de caractériser le user
 }
